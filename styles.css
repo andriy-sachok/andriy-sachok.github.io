@@ -29,10 +29,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
     width: 40%;
     border-radius: 25px;
     background-color: rgba(176, 135, 222, 0.589);
+}
+
+a {
+    text-decoration: none;
+}
+
+.text-in-project-window {
+    color: rgb(12, 0, 26);
+    font-size: 32px;
+    padding: 20px;
+    border-radius: 25px;
+    background-color: rgba(134, 215, 247, 0.863);
 }
 
 .notes {
