@@ -17,8 +17,8 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 5% 7%;
-    padding: 3% 0;
+    gap: 5% 10%;
+    padding: 2%;
     width: 40%;
     height: 75%;
     border-radius: 50px;
@@ -27,9 +27,10 @@ body {
 
 .project {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 40%;
+    height: 30%;
     border-radius: 25px;
     background-color: rgba(176, 135, 222, 0.589);
 }
@@ -39,33 +40,12 @@ a {
 }
 
 .text-in-project-window {
+    margin: auto;
     color: rgb(12, 0, 26);
     font-size: 32px;
-    padding: 20px;
+}
+
+img {
     border-radius: 25px;
-    background-color: rgba(134, 215, 247, 0.863);
-}
-
-.notes {
-    background-image: url("img/Notes-background.png");
-    background-position: center;
-    background-size: cover;
-}
-
-.calculator {
-    background-image: url("img/Calculator-background.png");
-    background-position: center;
-    background-size: cover;
-}
-
-.weather {
-    background-image: url("img/Weather-background.png");
-    background-position: center;
-    background-size: cover;
-}
-
-.pixel-art {
-    background-image: url("img/Pixel-art-background.png");
-    background-position: center;
-    background-size: cover;
+    width: 100%;
 }
