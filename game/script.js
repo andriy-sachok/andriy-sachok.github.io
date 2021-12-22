@@ -27,6 +27,7 @@ const obj = {
 };
 
 let turn = 0;
+let gameOver = false;
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
@@ -34,9 +35,22 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+const alertGameOver = () => {
+    if (gameOver) {
+        alert(`Game over!`);
+    }
+}
+
 const insertRandomO = (inserted = false) => {
 
-    if (inserted || turn >= 4) { return }; //!!!
+    if (inserted) { 
+        return;
+    };
+
+    if (turn >= 4) {
+        gameOver = true;
+        return;
+    }
 
     let randomInteger = getRandomIntInclusive(1, 9);
 
@@ -48,6 +62,7 @@ const insertRandomO = (inserted = false) => {
     } else {
         insertRandomO();
     }
+
 
 
 }
@@ -68,6 +83,8 @@ const setX = function (event) {
                 turn++;
                 insertRandomO();
                 drawSymbols();
+                turn++;
+                setTimeout(alertGameOver, 200);
             }
             break;
         case 'cell_2':
@@ -76,6 +93,7 @@ const setX = function (event) {
                 insertRandomO();
                 drawSymbols();
                 turn++;
+                setTimeout(alertGameOver, 200);            
             }
             break;
         case 'cell_3':
@@ -84,6 +102,7 @@ const setX = function (event) {
                 insertRandomO();
                 drawSymbols();
                 turn++;
+                setTimeout(alertGameOver, 200);            
             }
             break;
         case 'cell_4':
@@ -92,6 +111,7 @@ const setX = function (event) {
                 insertRandomO();
                 drawSymbols();
                 turn++;
+                setTimeout(alertGameOver, 200);            
             }
             break;
         case 'cell_5':
@@ -100,7 +120,8 @@ const setX = function (event) {
                 insertRandomO();
                 drawSymbols();
                 turn++;
-            }
+                setTimeout(alertGameOver, 200);
+                }
             break;
         case 'cell_6':
             if (obj.cell_6 == '') {
@@ -108,7 +129,8 @@ const setX = function (event) {
                 insertRandomO();
                 drawSymbols();
                 turn++;
-            }
+                setTimeout(alertGameOver, 200);
+                }
             break;
         case 'cell_7':
             if (obj.cell_7 == '') {
@@ -116,6 +138,7 @@ const setX = function (event) {
                 insertRandomO();
                 drawSymbols();
                 turn++;
+                setTimeout(alertGameOver, 200);
             }
             break;
         case 'cell_8':
@@ -124,6 +147,7 @@ const setX = function (event) {
                 insertRandomO();
                 drawSymbols();
                 turn++;
+                setTimeout(alertGameOver, 200);
             }
             break;
         case 'cell_9':
@@ -132,6 +156,7 @@ const setX = function (event) {
                 insertRandomO();
                 drawSymbols();
                 turn++;
+                setTimeout(alertGameOver, 200);
             }
             break;
         default:
