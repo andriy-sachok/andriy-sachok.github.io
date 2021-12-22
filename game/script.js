@@ -36,7 +36,7 @@ function getRandomIntInclusive(min, max) {
 
 const insertRandomO = (inserted = false) => {
 
-    if (inserted || turn < 4) { return }; //!!!
+    if (inserted || turn >= 4) { return }; //!!!
 
     let randomInteger = getRandomIntInclusive(1, 9);
 
@@ -75,6 +75,7 @@ const setX = function (event) {
                 obj.cell_2 = 'X';
                 insertRandomO();
                 drawSymbols();
+                turn++;
             }
             break;
         case 'cell_3':
@@ -82,6 +83,7 @@ const setX = function (event) {
                 obj.cell_3 = 'X';
                 insertRandomO();
                 drawSymbols();
+                turn++;
             }
             break;
         case 'cell_4':
@@ -89,6 +91,7 @@ const setX = function (event) {
                 obj.cell_4 = 'X';
                 insertRandomO();
                 drawSymbols();
+                turn++;
             }
             break;
         case 'cell_5':
@@ -96,6 +99,7 @@ const setX = function (event) {
                 obj.cell_5 = 'X';
                 insertRandomO();
                 drawSymbols();
+                turn++;
             }
             break;
         case 'cell_6':
@@ -103,6 +107,7 @@ const setX = function (event) {
                 obj.cell_6 = 'X';
                 insertRandomO();
                 drawSymbols();
+                turn++;
             }
             break;
         case 'cell_7':
@@ -110,6 +115,7 @@ const setX = function (event) {
                 obj.cell_7 = 'X';
                 insertRandomO();
                 drawSymbols();
+                turn++;
             }
             break;
         case 'cell_8':
@@ -117,6 +123,7 @@ const setX = function (event) {
                 obj.cell_8 = 'X';
                 insertRandomO();
                 drawSymbols();
+                turn++;
             }
             break;
         case 'cell_9':
@@ -124,6 +131,7 @@ const setX = function (event) {
                 obj.cell_9 = 'X';
                 insertRandomO();
                 drawSymbols();
+                turn++;
             }
             break;
         default:
