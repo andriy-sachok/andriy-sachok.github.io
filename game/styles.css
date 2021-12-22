@@ -21,7 +21,6 @@ body {
     height: 100vh;
     width: 100vw;
     background-color: black;
-    z-index: 1;
 }
 
 .cell {
@@ -56,9 +55,7 @@ body {
     height: 45%;
     color: red;
     background-color: wheat;
-    /* font-size: 24px; */
     border-radius: 25px;
-    z-index: 2;
 }
 
 p {
@@ -68,4 +65,5 @@ p {
 
 #winner {
     font-size: 24px;
+    color: black;
 }

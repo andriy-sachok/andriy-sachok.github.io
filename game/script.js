@@ -105,7 +105,7 @@ const playGame = () => {
 const showResult = () => {
     // switch displays
     document.querySelector('#winner').innerHTML = winner.innerHTML;
-    startScreen.style.opacity = 0.5;
+    startScreen.style.opacity = 0.65;
     finishScreen.style.display = 'flex';
 }
 
