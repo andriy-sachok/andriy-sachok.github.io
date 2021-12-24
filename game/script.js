@@ -38,12 +38,6 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// const alertGameOver = () => {
-//     if (gameOver) {
-//         alert(`Game over!`);
-//     }
-// }
-
 const checkGameStatus = () => {
     if (
         // horizontal lines
@@ -99,7 +93,6 @@ const playGame = () => {
     insertRandomO();
     drawSymbols();
     checkGameStatus();
-    // setTimeout(alertGameOver, 200);
 }
 
 const showResult = () => {
@@ -115,9 +108,8 @@ const resetGame = () => {
     gameOver = false;
     turn = 0;
     finishScreen.style.display = 'none';
-    // startScreen.style.display = 'grid';
     startScreen.style.opacity = 1;
-    
+
 }
 
 const clearPlaygroud = () => {
@@ -134,7 +126,7 @@ const clearPlaygroud = () => {
 
 const insertRandomO = (inserted = false) => {
 
-    if (inserted || turn >= 5) { 
+    if (inserted || turn >= 5) {
         return;
     };
 
@@ -159,38 +151,38 @@ const setX = function (event) {
         case 'cell_1':
             if (obj.cell_1 == '') {
                 obj.cell_1 = 'X';
-            playGame();
+                playGame();
             }
             break;
         case 'cell_2':
             if (obj.cell_2 == '') {
                 obj.cell_2 = 'X';
-                playGame();           
+                playGame();
             }
             break;
         case 'cell_3':
             if (obj.cell_3 == '') {
                 obj.cell_3 = 'X';
-                playGame();         
+                playGame();
             }
             break;
         case 'cell_4':
             if (obj.cell_4 == '') {
                 obj.cell_4 = 'X';
-                playGame();            
+                playGame();
             }
             break;
         case 'cell_5':
             if (obj.cell_5 == '') {
                 obj.cell_5 = 'X';
                 playGame();
-                }
+            }
             break;
         case 'cell_6':
             if (obj.cell_6 == '') {
                 obj.cell_6 = 'X';
                 playGame();
-                }
+            }
             break;
         case 'cell_7':
             if (obj.cell_7 == '') {
