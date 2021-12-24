@@ -10,9 +10,12 @@ const cell_7 = document.querySelector("#cell_7");
 const cell_8 = document.querySelector("#cell_8");
 const cell_9 = document.querySelector('#cell_9');
 
-let cells = Array.from(document.querySelectorAll('.cell'));
+const winner = document.querySelector('#winner');
 
-// console.log(cells);
+const startScreen = document.querySelector('.playground');
+const finishScreen = document.querySelector('.result');
+
+let cells = Array.from(document.querySelectorAll('.cell'));
 
 const obj = {
     cell_1: '',
@@ -35,26 +38,107 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-const alertGameOver = () => {
-    if (gameOver) {
-        alert(`Game over!`);
+// const alertGameOver = () => {
+//     if (gameOver) {
+//         alert(`Game over!`);
+//     }
+// }
+
+const checkGameStatus = () => {
+    if (
+        // horizontal lines
+        (obj.cell_1 == 'X' && obj.cell_2 == 'X' && obj.cell_3 == 'X') ||
+        (obj.cell_4 == 'X' && obj.cell_5 == 'X' && obj.cell_6 == 'X') ||
+        (obj.cell_7 == 'X' && obj.cell_8 == 'X' && obj.cell_9 == 'X') ||
+
+        // vertical lines
+        (obj.cell_1 == 'X' && obj.cell_4 == 'X' && obj.cell_7 == 'X') ||
+        (obj.cell_2 == 'X' && obj.cell_5 == 'X' && obj.cell_8 == 'X') ||
+        (obj.cell_3 == 'X' && obj.cell_6 == 'X' && obj.cell_9 == 'X') ||
+
+        // diagonals
+        (obj.cell_1 == 'X' && obj.cell_5 == 'X' && obj.cell_9 == 'X') ||
+        (obj.cell_3 == 'X' && obj.cell_5 == 'X' && obj.cell_7 == 'X')) {
+        winner.innerHTML = 'X-player won!';
+        showResult();
+        gameOver = true
+        return;
+
+    } else if (
+
+        // horizontal lines
+        (obj.cell_1 == 'O' && obj.cell_2 == 'O' && obj.cell_3 == 'O') ||
+        (obj.cell_4 == 'O' && obj.cell_5 == 'O' && obj.cell_6 == 'O') ||
+        (obj.cell_7 == 'O' && obj.cell_8 == 'O' && obj.cell_9 == 'O') ||
+
+        // vertical lines
+        (obj.cell_1 == 'O' && obj.cell_4 == 'O' && obj.cell_7 == 'O') ||
+        (obj.cell_2 == 'O' && obj.cell_5 == 'O' && obj.cell_8 == 'O') ||
+        (obj.cell_3 == 'O' && obj.cell_6 == 'O' && obj.cell_9 == 'O') ||
+
+        // diagonals
+        (obj.cell_1 == 'O' && obj.cell_5 == 'O' && obj.cell_9 == 'O') ||
+        (obj.cell_3 == 'O' && obj.cell_5 == 'O' && obj.cell_7 == 'O')) {
+        winner.innerHTML = 'O-player won!';
+        showResult();
+        gameOver = true
+        return;
+
     }
+
+    if (turn >= 5) {
+        winner.innerHTML = 'Noone won!';
+        showResult();
+        gameOver = true;
+        return;
+    }
+}
+
+const playGame = () => {
+    turn++;
+    insertRandomO();
+    drawSymbols();
+    checkGameStatus();
+    // setTimeout(alertGameOver, 200);
+}
+
+const showResult = () => {
+    // switch displays
+    document.querySelector('#winner').innerHTML = winner.innerHTML;
+    startScreen.style.opacity = 0.65;
+    finishScreen.style.display = 'flex';
+}
+
+const resetGame = () => {
+    clearPlaygroud();
+    drawSymbols();
+    gameOver = false;
+    turn = 0;
+    finishScreen.style.display = 'none';
+    // startScreen.style.display = 'grid';
+    startScreen.style.opacity = 1;
+    
+}
+
+const clearPlaygroud = () => {
+    obj.cell_1 = '';
+    obj.cell_2 = '';
+    obj.cell_3 = '';
+    obj.cell_4 = '';
+    obj.cell_5 = '';
+    obj.cell_6 = '';
+    obj.cell_7 = '';
+    obj.cell_8 = '';
+    obj.cell_9 = '';
 }
 
 const insertRandomO = (inserted = false) => {
 
-    if (inserted) { 
+    if (inserted || turn >= 5) { 
         return;
     };
 
-    if (turn >= 4) {
-        gameOver = true;
-        return;
-    }
-
     let randomInteger = getRandomIntInclusive(1, 9);
-
-    console.log(`It's randomInteger ${randomInteger}`);
 
     if (obj[`cell_${randomInteger}`] == '') {
         obj[`cell_${randomInteger}`] = 'O';
@@ -62,11 +146,7 @@ const insertRandomO = (inserted = false) => {
     } else {
         insertRandomO();
     }
-
-
-
 }
-
 
 const drawSymbols = () => {
     for (let i = 0; i < cells.length; i++) {
@@ -74,89 +154,60 @@ const drawSymbols = () => {
     }
 }
 
-
 const setX = function (event) {
     switch (this.id) {
         case 'cell_1':
             if (obj.cell_1 == '') {
                 obj.cell_1 = 'X';
-                turn++;
-                insertRandomO();
-                drawSymbols();
-                turn++;
-                setTimeout(alertGameOver, 200);
+            playGame();
             }
             break;
         case 'cell_2':
             if (obj.cell_2 == '') {
                 obj.cell_2 = 'X';
-                insertRandomO();
-                drawSymbols();
-                turn++;
-                setTimeout(alertGameOver, 200);            
+                playGame();           
             }
             break;
         case 'cell_3':
             if (obj.cell_3 == '') {
                 obj.cell_3 = 'X';
-                insertRandomO();
-                drawSymbols();
-                turn++;
-                setTimeout(alertGameOver, 200);            
+                playGame();         
             }
             break;
         case 'cell_4':
             if (obj.cell_4 == '') {
                 obj.cell_4 = 'X';
-                insertRandomO();
-                drawSymbols();
-                turn++;
-                setTimeout(alertGameOver, 200);            
+                playGame();            
             }
             break;
         case 'cell_5':
             if (obj.cell_5 == '') {
                 obj.cell_5 = 'X';
-                insertRandomO();
-                drawSymbols();
-                turn++;
-                setTimeout(alertGameOver, 200);
+                playGame();
                 }
             break;
         case 'cell_6':
             if (obj.cell_6 == '') {
                 obj.cell_6 = 'X';
-                insertRandomO();
-                drawSymbols();
-                turn++;
-                setTimeout(alertGameOver, 200);
+                playGame();
                 }
             break;
         case 'cell_7':
             if (obj.cell_7 == '') {
                 obj.cell_7 = 'X';
-                insertRandomO();
-                drawSymbols();
-                turn++;
-                setTimeout(alertGameOver, 200);
+                playGame();
             }
             break;
         case 'cell_8':
             if (obj.cell_8 == '') {
                 obj.cell_8 = 'X';
-                insertRandomO();
-                drawSymbols();
-                turn++;
-                setTimeout(alertGameOver, 200);
+                playGame();
             }
             break;
         case 'cell_9':
             if (obj.cell_9 == '') {
                 obj.cell_9 = 'X';
-                insertRandomO();
-                drawSymbols();
-                turn++;
-                setTimeout(alertGameOver, 200);
+                playGame();
             }
             break;
         default:
@@ -164,13 +215,6 @@ const setX = function (event) {
             break;
     }
 }
-
-// const checkGameStatus = () => {
-// if (&& && &&) {
-//     alert('Game over');
-// }
-// }
-
 
 cell_1.onclick = setX;
 cell_2.onclick = setX;
