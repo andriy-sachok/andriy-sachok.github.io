@@ -90,7 +90,8 @@ const checkGameStatus = () => {
 
 const playGame = () => {
     turn++;
-    insertRandomO();
+    insertO();
+    // insertRandomO();
     drawSymbols();
     checkGameStatus();
 }
@@ -124,21 +125,54 @@ const clearPlaygroud = () => {
     obj.cell_9 = '';
 }
 
-const insertRandomO = (inserted = false) => {
+const insertO = () => {
 
-    if (inserted || turn >= 5) {
+    if (turn >= 5) {
         return;
-    };
-
-    let randomInteger = getRandomIntInclusive(1, 9);
-
-    if (obj[`cell_${randomInteger}`] == '') {
-        obj[`cell_${randomInteger}`] = 'O';
-        insertRandomO(true);
-    } else {
-        insertRandomO();
+    }
+    if (obj.cell_4 == 'X') {
+        obj.cell_5 = 'O';
+    }
+    if ((obj.cell_4 == 'X') && (obj.cell_1 == 'X')) {
+        obj.cell_7 = 'O';
+    }
+    if ((obj.cell_4 == 'X') && (obj.cell_1 == 'X') &&
+        (obj.cell_3 == '') && (turn == 3)) {
+        obj.cell_3 = 'O';
+    }
+    if ((obj.cell_4 == 'X') && (obj.cell_1 == 'X') &&
+        (obj.cell_3 == 'X')) {
+        obj.cell_2 = 'O';
+    }
+    if ((obj.cell_4 == 'X') && (obj.cell_1 == 'X') &&
+        (obj.cell_3 == 'X') && (obj.cell_8 == '') &&
+        (turn == 4)) {
+        obj.cell_8 = 'O';
+    }
+    if ((obj.cell_4 == 'X') && (obj.cell_1 == 'X') &&
+        (obj.cell_3 == 'X') && (obj.cell_8 == 'X')) {
+        obj.cell_6 = 'O';
     }
 }
+
+
+
+
+// const insertRandomO = (inserted = false) => {
+
+//     if (inserted || turn >= 5) {
+//         return;
+//     };
+
+//     let randomInteger = getRandomIntInclusive(1, 9);
+
+//     if (obj[`cell_${randomInteger}`] == '') {
+//         obj[`cell_${randomInteger}`] = 'O';
+//         insertRandomO(true);
+//     } else {
+//         insertRandomO();
+//     }
+// }
 
 const drawSymbols = () => {
     for (let i = 0; i < cells.length; i++) {
