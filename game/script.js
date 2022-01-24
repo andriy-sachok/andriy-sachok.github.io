@@ -130,30 +130,90 @@ const insertO = () => {
     if (turn >= 5) {
         return;
     }
-    if (obj.cell_4 == 'X') {
-        obj.cell_5 = 'O';
-    }
-    if ((obj.cell_4 == 'X') && (obj.cell_1 == 'X')) {
-        obj.cell_7 = 'O';
-    }
-    if ((obj.cell_4 == 'X') && (obj.cell_1 == 'X') &&
-        (obj.cell_3 == '') && (turn == 3)) {
-        obj.cell_3 = 'O';
-    }
-    if ((obj.cell_4 == 'X') && (obj.cell_1 == 'X') &&
-        (obj.cell_3 == 'X')) {
-        obj.cell_2 = 'O';
-    }
-    if ((obj.cell_4 == 'X') && (obj.cell_1 == 'X') &&
-        (obj.cell_3 == 'X') && (obj.cell_8 == '') &&
-        (turn == 4)) {
-        obj.cell_8 = 'O';
-    }
+
+    // left edge start
+    // 1
     if ((obj.cell_4 == 'X') && (obj.cell_1 == 'X') &&
         (obj.cell_3 == 'X') && (obj.cell_8 == 'X')) {
         obj.cell_6 = 'O';
     }
+    else if ((obj.cell_4 == 'X') && (obj.cell_1 == 'X') &&
+        (obj.cell_3 == 'X') && (obj.cell_8 == '') &&
+        (turn == 4)) {
+        obj.cell_8 = 'O';
+    }
+    else if ((obj.cell_4 == 'X') && (obj.cell_1 == 'X') &&
+        (obj.cell_3 == 'X') && (turn == 3)) {
+        obj.cell_2 = 'O';
+    }
+    else if ((obj.cell_4 == 'X') && (obj.cell_1 == 'X') &&
+        (obj.cell_3 == '') && (turn == 3)) {
+        obj.cell_3 = 'O';
+    }
+    else if ((obj.cell_4 == 'X') && (obj.cell_1 == 'X')) {
+        obj.cell_7 = 'O';
+    }
+    else if (obj.cell_4 == 'X') {
+        obj.cell_5 = 'O';
+    }
+
+
+    // 2
+    if ((obj.cell_4 == 'X') && (obj.cell_2 == 'X') &&
+        (obj.cell_9 == 'X') && (obj.cell_3 == 'X')) {
+        obj.cell_6 = 'O';
+    }
+    else if ((obj.cell_4 == 'X') && (obj.cell_2 == 'X') &&
+        (obj.cell_9 == 'X') && (obj.cell_3 == '') && (turn == 4)) {
+        obj.cell_3 = 'O';
+    }
+    else if ((obj.cell_4 == 'X') && (obj.cell_2 == 'X') &&
+        (obj.cell_9 == 'X') && (turn == 3)) {
+        obj.cell_7 = 'O';
+    }
+    else if ((obj.cell_4 == 'X') && (obj.cell_2 == 'X') &&
+        (obj.cell_9 == '') && (turn == 3)) {
+        obj.cell_9 = 'O';
+    }
+    else if ((obj.cell_4 == 'X') && (obj.cell_2 == 'X')) {
+        obj.cell_1 = 'O';
+    }
+
+    // 3
+    // 3.1
+    if ((obj.cell_4 == 'X') && (obj.cell_3 == 'X') &&
+        (obj.cell_9 == 'X') && (obj.cell_2 == 'X') &&
+        obj.cell_7 == '') {
+        obj.cell_8 = 'O';
+    }
+    // 3.2
+    else if ((obj.cell_4 == 'X') && (obj.cell_3 == 'X') &&
+        (obj.cell_9 == 'X') && (obj.cell_8 == 'X') &&
+        (obj.cell_7 == '')) {
+        obj.cell_7 = 'O';
+    }
+    // 3.3
+    else if ((obj.cell_4 == 'X') && (obj.cell_3 == 'X') &&
+        (obj.cell_9 == 'X') && (obj.cell_2 == '') &&
+        (obj.cell_7 == 'X')) {
+        obj.cell_8 = 'O';
+    }
+    else if ((obj.cell_4 == 'X') && (obj.cell_3 == 'X') &&
+        (obj.cell_9 == 'X')) {
+        obj.cell_6 = 'O';
+    }
+    else if ((obj.cell_4 == 'X') && (obj.cell_3 == 'X') &&
+        (obj.cell_9 == '') && (turn == 3) &&
+        (obj.cell_1 == 'O')) {
+        obj.cell_9 = 'O';
+    }
+    else if ((obj.cell_4 == 'X') && (obj.cell_3 == 'X') &&
+        (turn == 2)) {
+        obj.cell_1 = 'O';
+    }
 }
+
+
 
 
 
